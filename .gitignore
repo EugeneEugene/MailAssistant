@@ -1,0 +1,18 @@
+# Secrets
+Secrets.plist
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+
+# Build products
+DerivedData/
+.build/
+
+# Debug files
+*.dSYM
+*.swp
+*.log
+
+# macOS
+.DS_Store
