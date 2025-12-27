@@ -1,0 +1,37 @@
+# Build products
+build/
+DerivedData/
+
+# User-specific Xcode data
+**/xcuserdata/
+**/*.xcuserstate
+**/*.xccheckout
+**/xcschemes/
+
+# Swift Package Manager (build artifacts; keep Package.resolved)
+.swiftpm/
+.build/
+# Keep this tracked (dependency lockfile)
+!Package.resolved
+
+# iOS device logs & archives
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift/Obj-C intermediates
+*.hmap
+
+# Playgrounds intermediates
+timeline.xctimeline
+playground.xcworkspace
+
+# Xcode state
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Misc editor/system files
+.DS_Store
+*.swp
+*.orig
