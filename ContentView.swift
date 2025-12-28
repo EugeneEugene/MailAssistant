@@ -1,13 +1,5 @@
 import SwiftUI
 
-struct Email: Identifiable, Hashable {
-    let id = UUID()
-    let from: String
-    let subject: String
-    let preview: String
-    let body: String
-}
-
 struct ContentView: View {
     @State private var inbox: [Email] = [
         Email(
@@ -64,6 +56,14 @@ struct ContentView: View {
         .padding()
         .background(.thinMaterial)
     }
+    
+    private func fetchGmail() {
+        // TODO: Integrate Gmail API / OAuth flow
+        isFetching = true
+        defer { isFetching = false }
+        // Simulate refresh
+        inbox.shuffle()
+    }
 
     private var inboxList: some View {
         List(selection: $selectedEmail) {
@@ -90,105 +90,8 @@ struct ContentView: View {
 
     // MARK: - Actions (placeholders)
 
-    private func fetchGmail() {
-        // TODO: Integrate Gmail API / OAuth flow
-        isFetching = true
-        defer { isFetching = false }
-        // Simulate refresh
-        inbox.shuffle()
-    }
 }
 
-// MARK: - AI Service (OpenAI)
-private struct AIService {
-    enum AIError: Error { case missingAPIKey; case badResponse }
-    
-    static func apiKey() -> String? {
-                if let env = ProcessInfo.processInfo.environment["OPENAI_API_KEY"], !env.isEmpty {
-                    return env
-                }
-                if let plistKey = Bundle.main.object(forInfoDictionaryKey: "OpenAIAPIKey") as? String, !plistKey.isEmpty {
-                    return plistKey
-                }
-                return nil
-    }
-    
-    
-    static func generateReply(for email: Email, tone: String = "professional") async throws -> String {
-        guard let key = apiKey() else { throw AIError.missingAPIKey }
-        
-        let url = URL(string: "https://api.openai.com/v1/responses")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let prompt = """
-        You are an assistant that drafts clear, \(tone) email replies.
-        
-        Original email:
-        From: \(email.from)
-        Subject: \(email.subject)
-        
-        \(email.body)
-        
-        Write a reply. Start with a greeting and end with a sign-off.
-        """
-        
-        struct Payload: Encodable {
-            let model: String
-            let input: String
-        }
-        
-        let payload = Payload(
-            model: "gpt-4.1-mini", // use a valid model for responses API
-            input: prompt
-        )
-        
-        request.httpBody = try JSONEncoder().encode(payload)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let http = response as? HTTPURLResponse else {
-            throw AIError.badResponse
-        }
-        
-        // Debug printing — VERY useful
-        print("Status:", http.statusCode)
-        print("Raw JSON:", String(decoding: data, as: UTF8.self))
-        
-        guard 200..<300 ~= http.statusCode else {
-            throw AIError.badResponse
-        }
-        
-        struct Completion: Decodable {
-            let output_text: [String]?
-        }
-        
-        struct ResponseData: Decodable {
-            struct Output: Decodable {
-                struct Content: Decodable {
-                    let type: String
-                    let text: String?
-                }
-                let content: [Content]
-            }
-            let output: [Output]
-        }
-        
-        let decoded = try JSONDecoder().decode(ResponseData.self, from: data)
-        
-        let reply = decoded.output
-            .first?
-            .content
-            .first(where: { $0.type == "output_text" })?
-            .text?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        return reply
-        ?? ""
-    }
-}
 
 
 // MARK: - Second Screen: Compose & Send

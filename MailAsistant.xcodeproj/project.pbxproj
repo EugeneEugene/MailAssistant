@@ -7,23 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E9C25382F00547A007B2696 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9C25372F00547A007B2696 /* GoogleSignIn */; };
+		1E9C253A2F00547A007B2696 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9C25392F00547A007B2696 /* GoogleSignInSwift */; };
 		1EF6F41A2EFF3A1B001294CE /* MailAsistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6F4192EFF3A1B001294CE /* MailAsistantApp.swift */; };
 		1EF6F41C2EFF3A1B001294CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6F41B2EFF3A1B001294CE /* ContentView.swift */; };
 		1EF6F41E2EFF3A1D001294CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EF6F41D2EFF3A1D001294CE /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E9C25442F018B60007B2696 /* MailAsistant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MailAsistant-Info.plist"; sourceTree = "<group>"; };
 		1EF6F4162EFF3A1B001294CE /* MailAsistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailAsistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF6F4192EFF3A1B001294CE /* MailAsistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAsistantApp.swift; sourceTree = "<group>"; };
 		1EF6F41B2EFF3A1B001294CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1EF6F41D2EFF3A1D001294CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1E9C253D2F006D84007B2696 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1E9C253E2F006DC8007B2696 /* ViewModels */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1E9C25412F017484007B2696 /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		1EF6F4132EFF3A1B001294CE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9C25382F00547A007B2696 /* GoogleSignIn in Frameworks */,
+				1E9C253A2F00547A007B2696 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +56,10 @@
 		1EF6F40D2EFF3A1B001294CE = {
 			isa = PBXGroup;
 			children = (
+				1E9C25442F018B60007B2696 /* MailAsistant-Info.plist */,
+				1E9C25412F017484007B2696 /* Services */,
+				1E9C253E2F006DC8007B2696 /* ViewModels */,
+				1E9C253D2F006D84007B2696 /* Models */,
 				1EF6F41D2EFF3A1D001294CE /* Assets.xcassets */,
 				1EF6F4172EFF3A1B001294CE /* Products */,
 				1EF6F41B2EFF3A1B001294CE /* ContentView.swift */,
@@ -63,8 +90,15 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				1E9C253D2F006D84007B2696 /* Models */,
+				1E9C253E2F006DC8007B2696 /* ViewModels */,
+				1E9C25412F017484007B2696 /* Services */,
+			);
 			name = MailAsistant;
 			packageProductDependencies = (
+				1E9C25372F00547A007B2696 /* GoogleSignIn */,
+				1E9C25392F00547A007B2696 /* GoogleSignInSwift */,
 			);
 			productName = MailAsistant;
 			productReference = 1EF6F4162EFF3A1B001294CE /* MailAsistant.app */;
@@ -94,6 +128,9 @@
 			);
 			mainGroup = 1EF6F40D2EFF3A1B001294CE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1E9C25362F00547A007B2696 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1EF6F4172EFF3A1B001294CE /* Products */;
 			projectDirPath = "";
@@ -256,6 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MailAsistant-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -287,6 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MailAsistant-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -331,6 +370,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E9C25362F00547A007B2696 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E9C25372F00547A007B2696 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E9C25362F00547A007B2696 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		1E9C25392F00547A007B2696 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E9C25362F00547A007B2696 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1EF6F40E2EFF3A1B001294CE /* Project object */;
 }
